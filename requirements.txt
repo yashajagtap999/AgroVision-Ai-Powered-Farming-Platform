@@ -4,6 +4,11 @@ sqlalchemy
 pydantic
 requests
 python-multipart
+reportlab
 fpdf2
 python-dotenv
 twilio
+pandas
+numpy
+scikit-learn
+gunicorn
