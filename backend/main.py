@@ -14,6 +14,14 @@ load_dotenv()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+import sys
+backend_dir = os.path.dirname(os.path.abspath(__file__))
+if backend_dir not in sys.path:
+    sys.path.insert(0, backend_dir)
+parent_dir = os.path.dirname(backend_dir)
+if parent_dir not in sys.path:
+    sys.path.insert(0, parent_dir)
+
 try:
     from backend import schemas, database, schemes, document_ai, ml_engine, speech_engine, pdf_generator, whatsapp_sender
 except Exception:
