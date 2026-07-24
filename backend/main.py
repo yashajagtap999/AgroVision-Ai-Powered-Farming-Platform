@@ -14,7 +14,10 @@ load_dotenv()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-from backend import schemas, database, schemes, document_ai, ml_engine, speech_engine, pdf_generator, whatsapp_sender
+try:
+    from backend import schemas, database, schemes, document_ai, ml_engine, speech_engine, pdf_generator, whatsapp_sender
+except Exception:
+    import schemas, database, schemes, document_ai, ml_engine, speech_engine, pdf_generator, whatsapp_sender
 
 # Initialize database
 database.Base.metadata.create_all(bind=database.engine)
