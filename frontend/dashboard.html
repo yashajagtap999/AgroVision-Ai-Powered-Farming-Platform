@@ -335,9 +335,9 @@
             if (roleEl && currentUser) roleEl.textContent = `Farmer (${currentUser.state || 'India'})`;
 
             // 2. Api Base Url Fallback
-            const API_BASE = (window.location.protocol.startsWith('http') && !window.location.origin.includes('localhost')) 
-                ? window.location.origin 
-                : 'http://localhost:8000';
+            const API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+                ? 'http://localhost:8000'
+                : 'https://agrovision-ai-powered-farming-platform-4.onrender.com';
 
             // 3. Local Rule Engine (Top-3 Recommendations)
             function getLocalRecommendations(n, p, k, temp, hum, ph, rain, soilType, water, season, landSize, prevCrop) {

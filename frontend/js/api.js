@@ -1,5 +1,7 @@
 // API Configurations
-const API_BASE_URL = (window.location.protocol.startsWith('http') && !window.location.origin.includes('localhost')) ? window.location.origin : 'http://localhost:8000';
+const API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') 
+    ? 'http://localhost:8000' 
+    : 'https://agrovision-ai-powered-farming-platform-4.onrender.com';
 
 // Session Management
 const SessionManager = {
