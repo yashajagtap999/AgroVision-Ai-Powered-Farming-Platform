@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroVision - AI Scheme Matching</title>
+    
+    <!-- External CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- Mobile Hamburger Toggle -->
+    <div id="mobile-hamburger-btn" class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <span style="font-size:1.6rem;">🌾</span>
+                <span class="sidebar-logo-text">AgroVision</span>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a href="dashboard.html" class="sidebar-link">
+                        <i class="fas fa-seedling"></i> <span>Crop Advisor</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="discovery.html" class="sidebar-link">
+                        <i class="fas fa-search"></i> <span>Scheme Discovery</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="videos.html" class="sidebar-link">
+                        <i class="fas fa-video"></i> <span>Video Tutorials</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="profile.html" class="sidebar-link active">
+                        <i class="fas fa-robot"></i> <span>AI Scheme Matching</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="resume.html" class="sidebar-link">
+                        <i class="fas fa-file-contract"></i> <span>Credentials Resume</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="chatbot.html" class="sidebar-link">
+                        <i class="fas fa-robot"></i> <span>Advisor Bot</span>
+                    </a>
+                </li>
+                <li class="sidebar-item" style="border-top:1px solid var(--border-color); padding-top: 10px; margin-top: 10px;">
+                    <a href="index.html" class="sidebar-link">
+                        <i class="fas fa-home"></i> <span>Return Home</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-user">
+                <div class="user-avatar">F</div>
+                <div class="user-info">
+                    <span class="user-name">Farmer Name</span>
+                    <span class="user-role">Farmer (State)</span>
+                </div>
+                <button id="sidebar-logout-btn" class="logout-btn" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-dashboard">
+            <header class="dashboard-header">
+                <div class="header-title-section">
+                    <h1 style="font-size:2rem; margin:0; letter-spacing:-0.5px;">🤖 AI Scheme Matching & Vault</h1>
+                    <span class="header-subtitle">Scan documents to auto-fill records and check scheme matches.</span>
+                </div>
+                <div class="lang-select-wrapper">
+                    <select id="global-lang-select" class="lang-select" aria-label="Select Language">
+                        <option value="English">English</option>
+                        <option value="हिंदी">हिंदी</option>
+                        <option value="मराठी">मराठी</option>
+                        <option value="తెలుగు">తెలుగు</option>
+                        <option value="മലയാളം">മലയാളം</option>
+                        <option value="ਪੰਜਾਬੀ">ਪੰਜਾਬੀ</option>
+                        <option value="ગુજરાતી">ગુજરાતી</option>
+                    </select>
+                </div>
+            </header>
+
+            <div class="row">
+                <!-- Left Column: Vault Upload & Profile Settings Form -->
+                <div class="col-xl-7 col-lg-12">
+                    <!-- Document Upload Zone -->
+                    <section class="panel-card glass-panel mb-4">
+                        <div class="panel-header" style="margin-bottom:0.75rem;">
+                            <h2 class="panel-title"><i class="fas fa-shield-alt" style="color:#2563eb;"></i> Document Vault Upload (OCR)</h2>
+                        </div>
+                        <p style="color:var(--text-secondary); font-size:0.85rem; margin-bottom:1.5rem;">
+                            💡 Hint: Upload a file containing the word <strong>"aadhaar"</strong>, <strong>"land"</strong>, or <strong>"bank"</strong> to trigger the AI OCR layouts parser.
+                        </p>
+                        
+                        <div id="vault-upload-zone" class="upload-dropzone ripple-effect">
+                            <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                            <div>
+                                <h4 style="font-size:1.1rem; font-weight:700; margin-bottom:5px;">Drag & Drop files here</h4>
+                                <p style="color:var(--text-muted); font-size:0.88rem; margin:0;">Supports Images (PNG, JPG) or PDF files</p>
+                            </div>
+                            <input type="file" id="vault-file-input" class="file-input" accept="image/*,application/pdf">
+                        </div>
+                        
+                        <div id="ocr-progress-status" class="alert alert-info mt-3" style="display:none; font-size:0.88rem; border-radius:10px;"></div>
+                    </section>
+
+                    <!-- Profile Form Settings -->
+                    <section class="panel-card glass-panel mb-4">
+                        <div class="panel-header">
+                            <h2 class="panel-title">🚜 Farmer Farm Parameters</h2>
+                        </div>
+                        <form id="profile-form">
+                            <div class="form-row-grid" style="margin-bottom: 1.25rem;">
+                                <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem;">
+                                    <label for="profile-name" class="form-label-custom" style="font-size:0.88rem; font-weight:600; color:var(--text-secondary); display:flex; align-items:center; gap:6px;"><i class="fas fa-user"></i> Full Name</label>
+                                    <input type="text" id="profile-name" class="form-control-custom" placeholder="Enter your full name" required>
+                                </div>
+                                <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem;">
+                                    <label for="profile-phone" class="form-label-custom" style="font-size:0.88rem; font-weight:600; color:var(--text-secondary); display:flex; align-items:center; gap:6px;"><i class="fas fa-phone-alt"></i> Phone Number</label>
+                                    <input type="tel" id="profile-phone" class="form-control-custom" placeholder="Enter 10-digit mobile number" required pattern="[0-9]{10}">
+                                </div>
+                            </div>
+
+                            <div class="form-row-grid" style="margin-bottom: 1.25rem;">
+                                <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem;">
+                                    <label for="profile-state" class="form-label-custom" style="font-size:0.88rem; font-weight:600; color:var(--text-secondary); display:flex; align-items:center; gap:6px;"><i class="fas fa-map-marker-alt"></i> State Location</label>
+                                    <select id="profile-state" class="form-control-custom" required aria-label="Profile State">
+                                        <option value="Maharashtra">Maharashtra</option>
+                                        <option value="Telangana">Telangana</option>
+                                        <option value="Odisha">Odisha</option>
+                                        <option value="Karnataka">Karnataka</option>
+                                        <option value="Tamil Nadu">Tamil Nadu</option>
+                                        <option value="Punjab">Punjab</option>
+                                        <option value="Chhattisgarh">Chhattisgarh</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem;">
+                                    <label for="profile-land" class="form-label-custom" style="font-size:0.88rem; font-weight:600; color:var(--text-secondary); display:flex; align-items:center; gap:6px;"><i class="fas fa-ruler-combined"></i> Land size (Acres)</label>
+                                    <input type="number" id="profile-land" class="form-control-custom" placeholder="e.g. 1.5" required step="0.1" min="0.1" max="100">
+                                </div>
+                            </div>
+
+                            <div class="form-row-grid" style="margin-bottom: 1.25rem;">
+                                <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem;">
+                                    <label for="profile-land-type" class="form-label-custom" style="font-size:0.88rem; font-weight:600; color:var(--text-secondary); display:flex; align-items:center; gap:6px;"><i class="fas fa-seedling"></i> Land Type</label>
+                                    <select id="profile-land-type" class="form-control-custom" required aria-label="Profile Land Type">
+                                        <option value="Arable (Cultivable)">Arable (Cultivable)</option>
+                                        <option value="Fallow (Resting)">Fallow (Resting)</option>
+                                        <option value="Barren/Uncultivable">Barren/Uncultivable</option>
+                                        <option value="Horticulture/Orchard">Horticulture/Orchard</option>
+                                    </select>
+                                </div>
+                                <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem;">
+                                    <label for="profile-irrigation" class="form-label-custom" style="font-size:0.88rem; font-weight:600; color:var(--text-secondary); display:flex; align-items:center; gap:6px;"><i class="fas fa-tint"></i> Irrigation Setup</label>
+                                    <select id="profile-irrigation" class="form-control-custom" required aria-label="Profile Irrigation">
+                                        <option value="Rainfed (No Irrigation)">Rainfed (No Irrigation)</option>
+                                        <option value="Partially Irrigated">Partially Irrigated</option>
+                                        <option value="Fully Irrigated (Tube well/Canal)">Fully Irrigated (Tube well/Canal)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem; margin-bottom: 1.5rem;">
+                                <label for="profile-crops" class="form-label-custom" style="font-size:0.88rem; font-weight:600; color:var(--text-secondary); display:flex; align-items:center; gap:6px;"><i class="fas fa-leaf"></i> Crops Cultivated (comma separated)</label>
+                                <input type="text" id="profile-crops" class="form-control-custom" placeholder="e.g. Wheat, Paddy" required>
+                            </div>
+
+                            <button type="submit" class="btn-premium btn-primary-custom w-100 ripple-effect" style="padding:1rem;">
+                                <i class="fas fa-save"></i> Save Profile Details & Match Schemes
+                            </button>
+                        </form>
+                    </section>
+                </div>
+
+                <!-- Right Column: Document Vault Vault list & Matched Schemes -->
+                <div class="col-xl-5 col-lg-12">
+                    <!-- Secure Vault Container -->
+                    <section class="panel-card glass-panel mb-4">
+                        <div class="panel-header">
+                            <h2 class="panel-title"><i class="fas fa-lock" style="color:#16a34a;"></i> Secure vault</h2>
+                        </div>
+                        <div id="vault-list-container" style="display:flex; gap:15px; flex-wrap:wrap;">
+                            <!-- Placeholder card -->
+                            <div class="glass-panel empty-vault-state" style="padding: 1.5rem; text-align:center; width:100%; border:1px dashed var(--border-color); border-radius:16px;">
+                                <i class="fas fa-folder-open" style="font-size:2rem; color:var(--text-muted); margin-bottom:8px;"></i>
+                                <p style="font-size:0.88rem; color:var(--text-secondary); margin:0;">No scanned documents added yet.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Matched Schemes side box -->
+                    <section id="profile-matched-schemes-wrapper" class="panel-card glass-panel fade-in-section is-visible" style="display:none;">
+                        <div class="panel-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                            <h2 class="panel-title" style="margin:0;"><i class="fas fa-sparkles" style="color:#7c3aed;"></i> <span data-i18n="ai_eligible_matches">AI Eligible Matches</span></h2>
+                            <button id="listen-schemes-btn" class="btn-premium btn-secondary-custom btn-sm" style="display:inline-flex; align-items:center; gap:6px; padding:0.4rem 0.85rem; font-size:0.85rem; border-radius:50px;" onclick="window.speakMatchedSchemes()">
+                                <i class="fas fa-volume-up"></i> <span data-i18n="listen_schemes">Listen Schemes</span>
+                            </button>
+                        </div>
+                        <div id="profile-matched-schemes-list" style="display:flex; flex-direction:column; margin-top:1rem;">
+                            <!-- Matched cards injected here by dashboard.js -->
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/animation.js"></script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+[
+  {
+    "scheme_name": "PM-KISAN",
+    "full_name": "Pradhan Mantri Kisan Samman Nidhi",
+    "category": "Income Support",
+    "type": "Central",
+    "state": "All India",
+    "target_roles": [
+      "Small Farmers",
+      "Marginal Farmers"
+    ],
+    "eligibility": "Landholding farmers families",
+    "benefits": "\u00e2\u201a\u00b96000 per year in 3 installments",
+    "documents_required": [
+      "Aadhaar",
+      "Land Records",
+      "Bank Passbook"
+    ],
+    "application_mode": "Online",
+    "priority": "High",
+    "apply_url": "https://pmkisan.gov.in/"
+  },
+  {
+    "scheme_name": "PMFBY",
+    "full_name": "Pradhan Mantri Fasal Bima Yojana",
+    "category": "Insurance",
+    "type": "Central",
+    "state": "All India",
+    "target_roles": [
+      "All Farmers"
+    ],
+    "eligibility": "All farmers including sharecroppers",
+    "benefits": "Financial support for crop loss due to natural calamities",
+    "documents_required": [
+      "Land Records",
+      "Bank Account",
+      "Sowing Certificate"
+    ],
+    "application_mode": "Online/Offline",
+    "priority": "High",
+    "apply_url": "https://pmfby.gov.in/"
+  },
+  {
+    "scheme_name": "KCC",
+    "full_name": "Kisan Credit Card",
+    "category": "Credit",
+    "type": "Central",
+    "state": "All India",
+    "target_roles": [
+      "Farmers",
+      "Dairy Farmers",
+      "Fishers"
+    ],
+    "eligibility": "Individual/Joint borrowers, Tenant farmers",
+    "benefits": "Short-term credit for crops at 4% interest rate",
+    "documents_required": [
+      "Aadhaar",
+      "Land Record",
+      "Photo"
+    ],
+    "application_mode": "Bank Branch",
+    "priority": "High",
+    "apply_url": "https://www.pib.gov.in/PressReleseDetail.aspx?PRID=1943729"
+  },
+  {
+    "scheme_name": "PM-KUSUM",
+    "full_name": "Solar Pump Scheme",
+    "category": "Energy",
+    "type": "Central",
+    "state": "All India",
+    "target_roles": [
+      "Individual Farmers",
+      "Panchayats",
+      "FPOs"
+    ],
+    "eligibility": "Farmers with barren/fallow land or existing pumps",
+    "benefits": "60% subsidy for solar pumps",
+    "documents_required": [
+      "Land Documents",
+      "Aadhaar",
+      "Bank Account"
+    ],
+    "application_mode": "Online (State Portal)",
+    "priority": "Medium",
+    "apply_url": "https://pmkusum.mnre.gov.in/"
+  },
+  {
+    "scheme_name": "Soil Health Card",
+    "full_name": "Soil Health Card Scheme",
+    "category": "Soil",
+    "type": "Central",
+    "state": "All India",
+    "target_roles": [
+      "All Farmers"
+    ],
+    "eligibility": "All farmers across the country",
+    "benefits": "Free soil testing and customized fertilizer advice",
+    "documents_required": [
+      "Farmer ID",
+      "Land Details"
+    ],
+    "application_mode": "Offline/Online",
+    "priority": "Medium",
+    "apply_url": "https://soilhealth.dac.gov.in/"
+  },
+  {
+    "scheme_name": "e-NAM",
+    "full_name": "National Agriculture Market",
+    "category": "Market",
+    "type": "Central",
+    "state": "All India",
+    "target_roles": [
+      "Farmers",
+      "Traders",
+      "FPOs"
+    ],
+    "eligibility": "Any farmer wishing to sell online",
+    "benefits": "Transparency in pricing and wider market reach",
+    "documents_required": [
+      "Aadhaar",
+      "Bank Account",
+      "Mobile Number"
+    ],
+    "application_mode": "Online",
+    "priority": "Medium",
+    "apply_url": "https://enam.gov.in/"
+  },
+  {
+    "scheme_name": "Namo Shetkari",
+    "full_name": "Namo Shetkari Mahasanman Nidhi",
+    "category": "Income Support",
+    "type": "State",
+    "state": "Maharashtra",
+    "target_roles": [
+      "Small Farmers"
+    ],
+    "eligibility": "Farmers registered under PM-KISAN in Maharashtra",
+    "benefits": "Additional \u00e2\u201a\u00b96000 per year (Total \u00e2\u201a\u00b912,000 with PM-KISAN)",
+    "documents_required": [
+      "PM-KISAN ID",
+      "Aadhaar"
+    ],
+    "application_mode": "Auto (linked to PM-KISAN)",
+    "priority": "High",
+    "apply_url": "https://nsmn.mahasdb.maharashtra.gov.in/"
+  },
+  {
+    "scheme_name": "Nanaji Deshmukh",
+    "full_name": "Nanaji Deshmukh Krishi Sanjivani Yojana (PoCRA)",
+    "category": "Climate Resilience",
+    "type": "State",
+    "state": "Maharashtra",
+    "target_roles": [
+      "Small & Marginal Farmers"
+    ],
+    "eligibility": "Farmers in drought-prone districts",
+    "benefits": "Subsidy for farm ponds, drip irrigation, and orchards",
+    "documents_required": [
+      "7/12 Extract",
+      "Aadhaar",
+      "Caste Certificate (if applicable)"
+    ],
+    "application_mode": "Online",
+    "priority": "Medium",
+    "apply_url": "https://dbt.mahapocra.gov.in/"
+  },
+  {
+    "scheme_name": "Gopinath Munde Vima",
+    "full_name": "Gopinath Munde Shetkari Apghat Vima Yojana",
+    "category": "Insurance",
+    "type": "State",
+    "state": "Maharashtra",
+    "target_roles": [
+      "Farmers"
+    ],
+    "eligibility": "Registered farmers in Maharashtra (age 10-75)",
+    "benefits": "\u00e2\u201a\u00b92 Lakh insurance for accidental death or disability",
+    "documents_required": [
+      "Death/Disability Certificate",
+      "7/12 Extract"
+    ],
+    "application_mode": "Offline (Taluka Agriculture Officer)",
+    "priority": "High",
+    "apply_url": "https://krishi.maharashtra.gov.in/"
+  },
+  {
+    "scheme_name": "PM-KMDY",
+    "full_name": "Pradhan Mantri Kisan Maandhan Yojana",
+    "category": "Pension",
+    "type": "Central",
+    "state": "All India",
+    "target_roles": [
+      "Small & Marginal Farmers"
+    ],
+    "eligibility": "Farmers aged 18-40 years",
+    "benefits": "Monthly pension of \u00e2\u201a\u00b93000 after reaching age 60",
+    "documents_required": [
+      "Aadhaar",
+      "Savings Bank Account",
+      "VLE Registration"
+    ],
+    "application_mode": "CSC / Online",
+    "priority": "Medium",
+    "apply_url": "https://maandhan.in/"
+  },
+  {
+    "scheme_name": "MIDH",
+    "full_name": "Mission for Integrated Development of Horticulture",
+    "category": "Horticulture",
+    "type": "Central",
+    "state": "All India",
+    "target_roles": [
+      "Farmers",
+      "Entrepreneurs"
+    ],
+    "eligibility": "Horticulture crop growers",
+    "benefits": "Subsidies for greenhouses, packhouses, and cold storage",
+    "documents_required": [
+      "Detailed Project Report",
+      "Land Records"
+    ],
+    "application_mode": "State Portal (NHM)",
+    "priority": "Medium",
+    "apply_url": "https://midh.gov.in/"
+  },
+  {
+    "scheme_name": "RYTHU BHAROSA",
+    "full_name": "YSR Rythu Bharosa",
+    "category": "Income Support",
+    "type": "State",
+    "state": "Andhra Pradesh",
+    "target_roles": [
+      "Landholding Farmers",
+      "Tenant Farmers"
+    ],
+    "eligibility": "Registered farmers in AP",
+    "benefits": "\u00e2\u201a\u00b913,500 per year assistance",
+    "documents_required": [
+      "Aadhaar",
+      "Land Title Deed",
+      "Bank Account"
+    ],
+    "application_mode": "Auto (Village Secretariat)",
+    "priority": "High",
+    "apply_url": "https://ysrrythubharosa.ap.gov.in/"
+  },
+  {
+    "scheme_name": "PKVY",
+    "full_name": "Paramparagat Krishi Vikas Yojana",
+    "category": "Organic",
+    "type": "Central",
+    "state": "All India",
+    "target_roles": [
+      "Farmer Groups / Clusters"
+    ],
+    "eligibility": "Groups of 20 or more farmers",
+    "benefits": "\u00e2\u201a\u00b950,000 per hectare support for organic transition",
+    "documents_required": [
+      "Cluster Registration",
+      "Aadhaar"
+    ],
+    "application_mode": "Offline (DAO)",
+    "priority": "Medium",
+    "apply_url": "https://pgsindia-ncof.dac.gov.in/"
+  }
+]

@@ -1,0 +1,9 @@
+flask
+flask-cors
+sqlalchemy
+pydantic
+requests
+python-multipart
+fpdf2
+python-dotenv
+twilio

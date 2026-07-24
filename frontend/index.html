@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AgroVision: AI-powered guide for Indian farmers to search government schemes, check eligibility, scan documents, and get crop suggestions.">
+    <title>AgroVision - Smart Scheme Navigator</title>
+    
+    <!-- External CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- AOS CSS CDN -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar-custom">
+        <a href="index.html" class="brand">
+            <span class="brand-logo">🌾</span>
+            <span class="brand-name">AgroVision</span>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link-item active">Home</a></li>
+            <li><a href="discovery.html" class="nav-link-item">Discovery</a></li>
+            <li><a href="dashboard.html" class="nav-link-item">Dashboard</a></li>
+            <li><a href="chatbot.html" class="nav-link-item">AI Advisor</a></li>
+        </ul>
+        <div class="nav-actions">
+            <!-- Language Selector Dropdown -->
+            <div class="lang-select-wrapper">
+                <select id="global-lang-select" class="lang-select" aria-label="Select Language">
+                    <option value="English">English</option>
+                    <option value="हिंदी">हिंदी</option>
+                    <option value="मराठी">मराठी</option>
+                    <option value="తెలుగు">తెలుగు</option>
+                    <option value="മലയാളം">മലയാളം</option>
+                    <option value="ਪੰਜਾਬੀ">ਪੰਜਾਬੀ</option>
+                    <option value="ગુજરાતી">ગુજરાતી</option>
+                </select>
+            </div>
+            <!-- Login/Signup buttons (filled dynamically by app.js) -->
+            <div id="navbar-auth-actions" style="display: flex; gap: 10px;"></div>
+        </div>
+    </nav>
+
+    <!-- Main Hero Section -->
+    <header class="hero-section">
+        <div class="hero-grid">
+            <div class="hero-text">
+                <div class="hero-badge" data-i18n="hero_badge">
+                    <i class="fas fa-sparkles"></i> 🌱 AI-Powered Farmer Navigator
+                </div>
+                <h1 class="hero-title">
+                    Grow with <br><span id="typewriter-text">AgroVision</span>
+                </h1>
+                <p id="hero-tagline" class="hero-description" style="font-weight:600; margin-bottom: 0px; color:var(--accent-color);" data-i18n="hero_tagline">
+                    Smart Guidance. Better Harvests. Brighter Future.
+                </p>
+                <p id="hero-desc" class="hero-description" data-i18n="hero_desc">
+                    An AI-powered platform helping Indian farmers discover government schemes, calculate benefits, learn modern farming techniques, and receive smart crop recommendations.
+                </p>
+                <div class="hero-buttons">
+                    <a href="login.html" class="btn-premium btn-primary-custom ripple-effect" data-i18n="start_journey">
+                        <i class="fas fa-arrow-right"></i> Start Your Journey
+                    </a>
+                    <a href="#features-section" class="btn-premium btn-secondary-custom ripple-effect" data-i18n="explore_features">
+                        Explore Features
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <div class="hero-image-wrapper floating-element" style="position:relative;">
+                    <img src="attractive_farmer.png" class="hero-image" alt="Modern Farmer using Tablet on Farm">
+                    <!-- Glassmorphic floating card overlays -->
+                    <div class="glass-panel" style="position:absolute; bottom:20px; left:20px; padding:0.75rem 1.25rem; border-radius:12px; display:flex; align-items:center; gap:10px; box-shadow:var(--card-shadow); border:1px solid rgba(255,255,255,0.25);">
+                        <span style="font-size:1.5rem;">🚜</span>
+                        <div style="text-align:left;">
+                            <h5 style="margin:0; font-size:0.9rem; font-weight:700;">15,000+</h5>
+                            <p style="margin:0; font-size:0.7rem; color:var(--text-secondary);" data-i18n="active_farmers">Active Farmers Guided</p>
+                        </div>
+                    </div>
+                    <div class="glass-panel" style="position:absolute; top:30px; right:20px; padding:0.75rem 1.25rem; border-radius:12px; display:flex; align-items:center; gap:10px; box-shadow:var(--card-shadow); border:1px solid rgba(255,255,255,0.25);">
+                        <span style="font-size:1.5rem; color:#16a34a;">💰</span>
+                        <div style="text-align:left;">
+                            <h5 style="margin:0; font-size:0.9rem; font-weight:700;">₹8.5Cr+</h5>
+                            <p style="margin:0; font-size:0.7rem; color:var(--text-secondary);" data-i18n="subsidies_disbursed">Subsidies Disbursed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Farming Statistics Bar -->
+    <section class="stats-bar-section">
+        <div class="stats-bar-grid">
+            <div class="stats-item">
+                <div class="stats-number">15,000+</div>
+                <div class="stats-label" data-i18n="registered_farmers_label">Active Registered Farmers</div>
+            </div>
+            <div class="stats-item">
+                <div class="stats-number">₹8.5 Crore+</div>
+                <div class="stats-label" data-i18n="subsidies_unlocked_label">Subsidy Benefits Unlocked</div>
+            </div>
+            <div class="stats-item">
+                <div class="stats-number">98.4%</div>
+                <div class="stats-label" data-i18n="matching_accuracy_label">Eligibility Matching Accuracy</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features section -->
+    <section id="features-section" class="features-section" style="padding: 6rem 5%; background: var(--bg-secondary);">
+        <div class="section-header" style="text-align: center; max-width: 700px; margin: 0 auto 3rem auto;">
+            <h2 class="section-title" style="font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; color: var(--text-primary);" data-i18n="features_header">Explore AgroVision Features</h2>
+            <p class="section-desc" style="font-size: 1.1rem; color: var(--text-secondary); margin-top: 10px;" data-i18n="features_sub">Powerful AI tools designed to simplify farming and improve productivity.</p>
+        </div>
+
+        <div class="features-grid-custom">
+            <!-- Card 1: Voice-First Assistant -->
+            <div class="feature-card-premium">
+                <div class="feature-icon-wrapper">
+                    <i class="fas fa-microphone"></i>
+                </div>
+                <h3 class="feature-title-text" data-i18n="feature1_title">Voice-First Assistant</h3>
+                <p class="feature-desc-text" data-i18n="feature1_desc">Talk to the AI naturally in Marathi, Hindi, English, and other regional languages. Ask farming questions using your voice and receive instant spoken responses.</p>
+                <a href="chatbot.html" class="feature-cta-btn btn-ripple" data-i18n="feature1_btn">
+                    Start Talking <span class="arrow-icon">→</span>
+                </a>
+            </div>
+            <!-- Card 2: AI Crop Recommendation -->
+            <div class="feature-card-premium">
+                <div class="feature-icon-wrapper">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3 class="feature-title-text" data-i18n="feature2_title">AI Crop Recommendation</h3>
+                <p class="feature-desc-text" data-i18n="feature2_desc">Receive personalized crop recommendations using AI based on soil type, weather conditions, rainfall, pH level, and season.</p>
+                <a href="dashboard.html" class="feature-cta-btn btn-ripple" data-i18n="feature2_btn">
+                    Recommend Crop <span class="arrow-icon">→</span>
+                </a>
+            </div>
+            <!-- Card 3: Government Scheme Navigator -->
+            <div class="feature-card-premium">
+                <div class="feature-icon-wrapper">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                <h3 class="feature-title-text" data-i18n="feature3_title">Government Scheme Navigator</h3>
+                <p class="feature-desc-text" data-i18n="feature3_desc">Find personalized government schemes, subsidies, PM-Kisan benefits, crop insurance, and eligibility details in one place.</p>
+                <a href="discovery.html" class="feature-cta-btn btn-ripple" data-i18n="feature3_btn">
+                    Explore Schemes <span class="arrow-icon">→</span>
+                </a>
+            </div>
+            <!-- Card 4: Smart Farming Video Tutorials -->
+            <div class="feature-card-premium">
+                <div class="feature-icon-wrapper">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <h3 class="feature-title-text" data-i18n="feature4_title">Smart Farming Video Tutorials</h3>
+                <p class="feature-desc-text" data-i18n="feature4_desc">Watch multilingual video tutorials on modern farming, disease prevention, irrigation, fertilizer usage, and best agricultural practices.</p>
+                <a href="dashboard.html" class="feature-cta-btn btn-ripple" data-i18n="feature4_btn">
+                    Watch Videos <span class="arrow-icon">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="timeline-section">
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="how_it_works_header">How AgroVision Works</h2>
+            <p class="section-desc" data-i18n="how_it_works_sub">Follow 4 simple steps to digitize your farm registry and verify subsidy matchings.</p>
+        </div>
+        
+        <div class="timeline-container">
+            <!-- Step 1 -->
+            <div class="timeline-step">
+                <div class="timeline-badge">1</div>
+                <div class="timeline-content">
+                    <h3 data-i18n="step1_title">Create Your Profile</h3>
+                    <p data-i18n="step1_desc">Enter your phone number, land size, and active crop configurations to register your agricultural dashboard.</p>
+                </div>
+            </div>
+            <!-- Step 2 -->
+            <div class="timeline-step">
+                <div class="timeline-badge">2</div>
+                <div class="timeline-content">
+                    <h3 data-i18n="step2_title">Document Vault Scan</h3>
+                    <p data-i18n="step2_desc">Upload land titles and state certificates. AI scans and automatically pre-fills parameters using Document OCR scanning.</p>
+                </div>
+            </div>
+            <!-- Step 3 -->
+            <div class="timeline-step">
+                <div class="timeline-badge">3</div>
+                <div class="timeline-content">
+                    <h3 data-i18n="step3_title">Match Government Schemes</h3>
+                    <p data-i18n="step3_desc">The rules matching engine parses parameters to fetch active central and state-level subsidy offerings immediately.</p>
+                </div>
+            </div>
+            <!-- Step 4 -->
+            <div class="timeline-step">
+                <div class="timeline-badge">4</div>
+                <div class="timeline-content">
+                    <h3 data-i18n="step4_title">Credential Resume & Alerts</h3>
+                    <p data-i18n="step4_desc">Download your verified Farmer Credentials Resume in PDF, and receive updates about payouts via automatic Twilio SMS.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial-section">
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="testimonials_header">What Farmers Say</h2>
+            <p class="section-desc" data-i18n="testimonials_sub">Discover how AgroVision is making agricultural benefits accessible across India.</p>
+        </div>
+        <div class="testimonial-card">
+            <p class="testimonial-quote" data-i18n="testimonial_quote">
+                "Before using AgroVision, matching eligible credit facilities was a slow, complex guessing game. Now, my certificates are scanned instantly, my profile is verified, and I can download a PDF of my agricultural credentials resume."
+            </p>
+            <div class="testimonial-avatar">VP</div>
+            <h4 class="testimonial-author" data-i18n="testimonial_author">Vikas Patil</h4>
+            <span class="testimonial-location" data-i18n="testimonial_location">Farmer, Maharashtra</span>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section class="faq-section">
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="faq_header">Frequently Asked Questions</h2>
+            <p class="section-desc" data-i18n="faq_sub">Got questions about AgroVision? We have answers.</p>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" data-i18n="faq1_q">
+                    How does AgroVision map scheme eligibility? <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer" data-i18n="faq1_a">
+                    AgroVision matches your profile metrics (land holding size, irrigation status, state location, and crops grown) directly against a digital rules index covering central initiatives (e.g. PM-KISAN, PM-KMY) and state-specific credit schemes.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" data-i18n="faq2_q">
+                    Is my certificate upload vault secure? <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer" data-i18n="faq2_a">
+                    Yes, all uploaded records, identity credentials, and land certificates are processed locally inside our Document AI system and stored in your private, secure credentials vault.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" data-i18n="faq3_q">
+                    Which regional Indian languages are supported? <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer" data-i18n="faq3_a">
+                    The platform currently offers translation settings for English, Hindi, Marathi, and Telugu. All video tutorials, buttons, and chatbot advisories support local voice input matching.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA banner -->
+    <section class="bottom-cta">
+        <div class="cta-card glass-panel fade-in-section">
+            <h2 class="cta-title" data-i18n="bottom_cta_title">Navigate Your Farm's Future Today</h2>
+            <p class="cta-desc" data-i18n="bottom_cta_desc">Sign up now to scan documents, check crop matching confidence, and print farmer credential resumes.</p>
+            <a href="login.html?signup=true" class="btn-premium btn-primary-custom ripple-effect" data-i18n="bottom_cta_btn">
+                Create Free Profile <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-custom">
+        <div class="footer-grid">
+            <div class="footer-col-about">
+                <a href="index.html" class="brand" style="margin-bottom:1rem;">
+                    <span class="brand-logo">🌾</span>
+                    <span class="brand-name">AgroVision</span>
+                </a>
+                <p class="footer-about-text" data-i18n="footer_about">Empowering Indian farmers with machine learning, document automation, and voice-assisted scheme navigation.</p>
+            </div>
+            <div>
+                <h4 class="footer-col-title" data-i18n="footer_platform">Platform</h4>
+                <ul class="footer-links">
+                    <li class="footer-link-item"><a href="discovery.html" data-i18n="sidebar_scheme_discovery">Scheme Discovery</a></li>
+                    <li class="footer-link-item"><a href="dashboard.html" data-i18n="sidebar_crop_advisor">Overview Dashboard</a></li>
+                    <li class="footer-link-item"><a href="chatbot.html" data-i18n="sidebar_advisor_bot">AI Advisor Chatbot</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-col-title" data-i18n="footer_resources">Resources</h4>
+                <ul class="footer-links">
+                    <li class="footer-link-item"><a href="login.html" data-i18n="footer_farmer_access">Farmer Access</a></li>
+                    <li class="footer-link-item"><a href="login.html?signup=true" data-i18n="footer_new_reg">New Registration</a></li>
+                    <li class="footer-link-item"><a href="https://pmkisan.gov.in" target="_blank" rel="noopener">PM-KISAN Portal</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span data-i18n="footer_rights">&copy; 2026 AgroVision. All rights reserved.</span>
+            <span data-i18n="footer_tagline">Made for modern Indian agriculture.</span>
+        </div>
+    </footer>
+
+    <!-- JS Scripts -->
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- AOS CDN -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+
+    <!-- Custom scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/animation.js"></script>
+</body>
+</html>

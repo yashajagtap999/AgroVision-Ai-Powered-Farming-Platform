@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroVision - Crop Advisor</title>
+    
+    <!-- External CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- Mobile Hamburger Toggle button -->
+    <div id="mobile-hamburger-btn" class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <span style="font-size:1.6rem;">🌾</span>
+                <span class="sidebar-logo-text">AgroVision</span>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a href="dashboard.html" class="sidebar-link active">
+                        <i class="fas fa-seedling"></i> <span>Crop Advisor</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="discovery.html" class="sidebar-link">
+                        <i class="fas fa-search"></i> <span>Scheme Discovery</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="videos.html" class="sidebar-link">
+                        <i class="fas fa-video"></i> <span>Video Tutorials</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="profile.html" class="sidebar-link">
+                        <i class="fas fa-robot"></i> <span>AI Scheme Matching</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="resume.html" class="sidebar-link">
+                        <i class="fas fa-file-contract"></i> <span>Credentials Resume</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="chatbot.html" class="sidebar-link">
+                        <i class="fas fa-robot"></i> <span>Advisor Bot</span>
+                    </a>
+                </li>
+                <li class="sidebar-item" style="border-top:1px solid var(--border-color); padding-top: 10px; margin-top: 10px;">
+                    <a href="index.html" class="sidebar-link">
+                        <i class="fas fa-home"></i> <span>Return Home</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Sidebar User profile section -->
+            <div class="sidebar-user">
+                <div class="user-avatar">F</div>
+                <div class="user-info">
+                    <span class="user-name">Farmer Name</span>
+                    <span class="user-role">Farmer (State)</span>
+                </div>
+                <button id="sidebar-logout-btn" class="logout-btn" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard View Panel -->
+        <main class="main-dashboard">
+            <!-- Header section -->
+            <header class="dashboard-header">
+                <div class="header-title-section">
+                    <h1 style="font-size:2rem; margin:0; letter-spacing:-0.5px;">🌱 AI Crop Advisor</h1>
+                    <span class="header-subtitle">Welcome back, <strong id="welcome-farmer-name" style="color:#2563eb;">Farmer</strong>! Enter parameters to predict optimal crops.</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <div class="lang-select-wrapper">
+                        <select id="global-lang-select" class="lang-select" aria-label="Select Language">
+                            <option value="English">English</option>
+                            <option value="हिंदी">हिंदी</option>
+                            <option value="मराठी">मराठी</option>
+                            <option value="తెలుగు">తెలుగు</option>
+                            <option value="മലയാളം">മലയാളം</option>
+                            <option value="ਪੰਜਾਬੀ">ਪੰਜਾਬੀ</option>
+                            <option value="ગુજરાતી">ગુજરાતી</option>
+                        </select>
+                    </div>
+                    <div class="status-pill status-online">
+                        <i class="fas fa-circle" style="font-size:0.5rem;"></i> Backend Online
+                    </div>
+                </div>
+            </header>
+
+            <!-- Grid: Crop Recommendation Advisor Form -->
+            <section class="panel-card glass-panel" style="margin-bottom: 2.5rem; padding: 2.5rem;">
+                <div class="panel-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.25rem; margin-bottom: 2rem;">
+                    <h2 class="panel-title"><i class="fas fa-seedling" style="color:#10b981;"></i> Crop Advisor Parameters</h2>
+                </div>
+                <p style="color:var(--text-secondary); margin-bottom: 2rem; font-size:0.95rem;">Enter soil parameters to predict optimal crops and identify linked government support schemes.</p>
+                
+                <div class="row">
+                    <!-- Inputs Form -->
+                    <div class="col-lg-6">
+                        <h4 style="font-size:1rem; margin-bottom:1.25rem; color:var(--text-secondary); font-weight:700;">🧪 Soil Nutrients (N-P-K) & Environment</h4>
+                        
+                        <div class="form-row-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 1.25rem;">
+                            <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem;">
+                                <label for="soil-n" class="form-label-custom" style="font-size:0.85rem; font-weight:600; color:var(--text-secondary);">Nitrogen (N)</label>
+                                <input type="number" id="soil-n" class="form-control-custom" placeholder="e.g. 70" value="70" required>
+                            </div>
+                            <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem;">
+                                <label for="soil-p" class="form-label-custom" style="font-size:0.85rem; font-weight:600; color:var(--text-secondary);">Phosphorus (P)</label>
+                                <input type="number" id="soil-p" class="form-control-custom" placeholder="e.g. 50" value="50" required>
+                            </div>
+                            <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem;">
+                                <label for="soil-k" class="form-label-custom" style="font-size:0.85rem; font-weight:600; color:var(--text-secondary);">Potassium (K)</label>
+                                <input type="number" id="soil-k" class="form-control-custom" placeholder="e.g. 40" value="40" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row-grid" style="margin-bottom: 1.25rem;">
+                            <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.25rem;">
+                                <label for="soil-temp" style="font-size:0.85rem; color:var(--text-secondary); font-weight:600;">Temperature (°C)</label>
+                                <input type="range" id="soil-temp" min="10" max="50" value="25" step="0.5" class="w-100" oninput="this.nextElementSibling.value = this.value + ' °C'">
+                                <output style="font-size:0.85rem; font-weight:600; color:var(--text-primary);">25 °C</output>
+                            </div>
+                            <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.25rem;">
+                                <label for="soil-hum" style="font-size:0.85rem; color:var(--text-secondary); font-weight:600;">Humidity (%)</label>
+                                <input type="range" id="soil-hum" min="10" max="100" value="70" step="1" class="w-100" oninput="this.nextElementSibling.value = this.value + ' %'">
+                                <output style="font-size:0.85rem; font-weight:600; color:var(--text-primary);">70 %</output>
+                            </div>
+                        </div>
+
+                        <div class="form-row-grid" style="margin-bottom: 1.25rem;">
+                            <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.25rem;">
+                                <label for="soil-ph" style="font-size:0.85rem; color:var(--text-secondary); font-weight:600;">Soil pH Level</label>
+                                <input type="range" id="soil-ph" min="4" max="9" value="6.5" step="0.1" class="w-100" oninput="this.nextElementSibling.value = this.value">
+                                <output style="font-size:0.85rem; font-weight:600; color:var(--text-primary);">6.5</output>
+                            </div>
+                            <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.25rem;">
+                                <label for="soil-rain" style="font-size:0.85rem; color:var(--text-secondary); font-weight:600;">Rainfall (mm)</label>
+                                <input type="range" id="soil-rain" min="200" max="2500" value="1000" step="50" class="w-100" oninput="this.nextElementSibling.value = this.value + ' mm'">
+                                <output style="font-size:0.85rem; font-weight:600; color:var(--text-primary);">1000 mm</output>
+                            </div>
+                        </div>
+
+                        <div class="form-row-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 1.25rem;">
+                            <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem;">
+                                <label for="soil-type-select" class="form-label-custom" style="font-size:0.85rem; font-weight:600; color:var(--text-secondary);">Soil Type</label>
+                                <select id="soil-type-select" class="form-control-custom" required aria-label="Select Soil Type">
+                                    <option value="Alluvial" selected>Alluvial</option>
+                                    <option value="Black">Black</option>
+                                    <option value="Red">Red</option>
+                                    <option value="Laterite">Laterite</option>
+                                    <option value="Desert">Desert</option>
+                                </select>
+                            </div>
+                            <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem;">
+                                <label for="soil-water-select" class="form-label-custom" style="font-size:0.85rem; font-weight:600; color:var(--text-secondary);">Water Access</label>
+                                <select id="soil-water-select" class="form-control-custom" required aria-label="Select Water Availability">
+                                    <option value="Low">Low</option>
+                                    <option value="Medium" selected>Medium</option>
+                                    <option value="High">High</option>
+                                </select>
+                            </div>
+                            <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem;">
+                                <label for="soil-season-select" class="form-label-custom" style="font-size:0.85rem; font-weight:600; color:var(--text-secondary);">Season</label>
+                                <select id="soil-season-select" class="form-control-custom" required aria-label="Select Current Season">
+                                    <option value="Kharif" selected>Kharif</option>
+                                    <option value="Rabi">Rabi</option>
+                                    <option value="Summer">Summer</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 1.25rem;">
+                            <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem;">
+                                <label for="soil-land" class="form-label-custom" style="font-size:0.85rem; font-weight:600; color:var(--text-secondary);">Land Size (Acres)</label>
+                                <input type="number" id="soil-land" class="form-control-custom" placeholder="e.g. 1.5" value="1.5" required step="0.1" min="0.1">
+                            </div>
+                            <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem;">
+                                <label for="soil-prev-crop" class="form-label-custom" style="font-size:0.85rem; font-weight:600; color:var(--text-secondary);">Previous Crop</label>
+                                <select id="soil-prev-crop" class="form-control-custom" required aria-label="Select Previous Crop">
+                                    <option value="None" selected>None (First Crop)</option>
+                                    <option value="Paddy">Paddy</option>
+                                    <option value="Wheat">Wheat</option>
+                                    <option value="Cotton">Cotton</option>
+                                    <option value="Sugarcane">Sugarcane</option>
+                                    <option value="Vegetables">Vegetables</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Auto Detect Location and Weather Button -->
+                        <div class="form-group-custom mb-3" style="display:flex; flex-direction:column; gap:0.6rem;">
+                            <label class="form-label-custom" style="font-size:0.85rem; font-weight:600; color:var(--text-secondary);">📍 Location & Climate Options</label>
+                            <div style="display:flex; gap:8px;">
+                                <input type="text" id="manual-city-input" class="form-control-custom" placeholder="Type City / District (e.g. Nashik, Nagpur)" style="flex:1;">
+                                <button type="button" id="search-city-btn" class="btn-premium btn-secondary-custom" style="padding: 0.75rem 1rem; white-space:nowrap; font-weight:700;">
+                                    <i class="fas fa-search"></i> Search City
+                                </button>
+                            </div>
+                            <button type="button" id="detect-weather-btn" class="btn-premium btn-secondary-custom w-100" style="padding: 0.75rem; font-size: 0.95rem; font-weight:700;">
+                                <i class="fas fa-map-marker-alt"></i> Auto-Detect Live GPS / IP Weather
+                            </button>
+                            <div id="detected-status-badge" class="alert alert-success" style="display:none; font-size:0.85rem; border-radius:10px; padding: 0.6rem 1rem; margin:0;">
+                                <i class="fas fa-check-circle"></i> Detected: <span id="detected-info"></span>
+                            </div>
+                            
+                            <!-- 5-Day Weather Forecast Section -->
+                            <div id="weather-5day-container" style="display:none; margin-top: 1rem; background: rgba(37,99,235,0.03); padding: 1.25rem; border-radius: 16px; border: 1px solid rgba(37,99,235,0.15);">
+                                <h5 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.85rem; display:flex; align-items:center; gap:8px;">
+                                    <i class="fas fa-calendar-alt" style="color:#2563eb;"></i> 📅 Next 5 Days Weather Forecast
+                                </h5>
+                                <div id="weather-5day-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px;">
+                                    <!-- Filled dynamically by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <button id="run-recommend-btn" class="btn-premium btn-primary-custom w-100 ripple-effect mt-3" style="padding:1rem;">
+                            <i class="fas fa-seedling"></i> Get Recommendation
+                        </button>
+                    </div>
+
+                    <!-- Result Panel -->
+                    <div class="col-lg-6 mt-4 mt-lg-0">
+                        <div id="recommendation-result-wrapper" style="display: none; height:100%;" class="fade-in-section is-visible">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.5rem; flex-wrap:wrap; gap:10px;">
+                                <h3 style="font-size: 1.25rem; font-weight: 800; margin: 0; color: var(--text-primary);">
+                                    <i class="fas fa-magic" style="color: #10b981; margin-right: 8px;"></i> <span data-i18n="top_ai_recs">Top 3 AI Crop Recommendations</span>
+                                </h3>
+                                <button id="listen-crop-rec-btn" class="btn-premium btn-secondary-custom btn-sm" style="display:inline-flex; align-items:center; gap:6px; padding:0.4rem 0.85rem; font-size:0.85rem; border-radius:50px;" onclick="window.speakCropRecommendations()">
+                                    <i class="fas fa-volume-up"></i> <span data-i18n="listen_recommendation">Listen Recommendations</span>
+                                </button>
+                            </div>
+                            
+                            <!-- Dynamic Cards Container -->
+                            <div id="rec-cards-container" style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 1.5rem;">
+                                <!-- Filled dynamically by Javascript -->
+                            </div>
+
+                            <div class="glass-panel" style="padding:1.5rem; border-radius:16px; border: 1px solid var(--border-color);">
+                                <h5 style="font-size:0.9rem; font-weight:700; color:var(--text-secondary); text-transform:uppercase; margin-bottom:8px;">Linked Schemes</h5>
+                                <ul id="rec-linked-schemes-list" style="list-style:none; padding-left:0; margin:0;">
+                                    <!-- List filled by script -->
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="recommendation-placeholder" style="display: flex; height: 100%; align-items: center; justify-content: center; border: 2px dashed var(--border-color); border-radius: var(--radius-lg); min-height: 200px; color: var(--text-muted); text-align: center;">
+                            <div>
+                                <i class="fas fa-chart-bar" style="font-size: 2.5rem; margin-bottom:10px;"></i>
+                                <p style="margin:0;">Submit soil parameters to get crop diagnostic summaries.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Global Floating chatbot icon -->
+    <a href="chatbot.html" class="floating-ai" title="AI Advisor Chat">
+        <i class="fas fa-comment-dots"></i>
+    </a>
+
+    <!-- Custom scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/animation.js"></script>
+    
+    <!-- Self-Contained Crop Advisor Controller (Guarantees immediate execution and bypasses any caching issues) -->
+    <script>
+        (function() {
+            console.log("Self-contained Crop Advisor Controller Initializing...");
+            
+            // 1. Session Manager Fallback
+            const LocalSession = {
+                getCurrentUser() {
+                    try {
+                        const user = localStorage.getItem('agro_user');
+                        return user ? JSON.parse(user) : null;
+                    } catch (e) {
+                        return null;
+                    }
+                },
+                setCurrentUser(user) {
+                    try {
+                        localStorage.setItem('agro_user', JSON.stringify(user));
+                    } catch (e) {}
+                },
+                requireAuth() {
+                    let user = this.getCurrentUser();
+                    if (!user) {
+                        user = {
+                            id: 999,
+                            name: "Guest Farmer",
+                            phone_number: "9999999999",
+                            state: "Maharashtra",
+                            land_size_acres: 2.5,
+                            crop_types: "Wheat, Paddy"
+                        };
+                        this.setCurrentUser(user);
+                    }
+                    return user;
+                }
+            };
+
+            const currentUser = LocalSession.requireAuth();
+
+            // Update UI Sidebar user if elements exist
+            const welcomeName = document.getElementById('welcome-farmer-name');
+            if (welcomeName && currentUser) welcomeName.textContent = currentUser.name;
+            const avatar = document.querySelector('.user-avatar');
+            if (avatar && currentUser.name) avatar.textContent = currentUser.name.charAt(0).toUpperCase();
+            const nameEl = document.querySelector('.user-name');
+            if (nameEl && currentUser.name) nameEl.textContent = currentUser.name;
+            const roleEl = document.querySelector('.user-role');
+            if (roleEl && currentUser) roleEl.textContent = `Farmer (${currentUser.state || 'India'})`;
+
+            // 2. Api Base Url Fallback
+            const API_BASE = (window.location.protocol.startsWith('http') && !window.location.origin.includes('localhost')) 
+                ? window.location.origin 
+                : 'http://localhost:8000';
+
+            // 3. Local Rule Engine (Top-3 Recommendations)
+            function getLocalRecommendations(n, p, k, temp, hum, ph, rain, soilType, water, season, landSize, prevCrop) {
+                const cropsDb = [
+                    {
+                        name: "Paddy", icon: "🌾",
+                        suitable_soils: ["Alluvial", "Clay", "Loamy"], suitable_seasons: ["Kharif"],
+                        temp_min: 20, temp_max: 35, hum_min: 70, hum_max: 95, ph_min: 5.5, ph_max: 7.0, rain_min: 1000, rain_max: 2500,
+                        water_req: "High", fertilizer: "Urea (Nitrogen-rich), DAP, and MOP", expected_yield: "3.5 - 4.5 tons/hectare",
+                        estimated_profit: "₹" + Math.round(42000 * parseFloat(landSize)).toLocaleString('en-IN') + " - ₹" + Math.round(50000 * parseFloat(landSize)).toLocaleString('en-IN') + " total",
+                        reasoning: "Paddy (Rice) is highly suitable due to high water availability, hot and humid weather, and clay/loamy soil structures."
+                    },
+                    {
+                        name: "Wheat", icon: "🌾",
+                        suitable_soils: ["Clay", "Loamy", "Alluvial"], suitable_seasons: ["Rabi"],
+                        temp_min: 10, temp_max: 25, hum_min: 40, hum_max: 70, ph_min: 6.0, ph_max: 7.5, rain_min: 400, rain_max: 1000,
+                        water_req: "Medium", fertilizer: "Balanced NPK (4:2:1 ratio) + Superphosphate", expected_yield: "3.0 - 4.0 tons/hectare",
+                        estimated_profit: "₹" + Math.round(28000 * parseFloat(landSize)).toLocaleString('en-IN') + " - ₹" + Math.round(38000 * parseFloat(landSize)).toLocaleString('en-IN') + " total",
+                        reasoning: "Wheat thrives in cooler winter seasons with moderate watering regimes and balanced loam soil structures."
+                    },
+                    {
+                        name: "Cotton", icon: "☁️",
+                        suitable_soils: ["Black", "Alluvial", "Loamy"], suitable_seasons: ["Kharif"],
+                        temp_min: 22, temp_max: 38, hum_min: 50, hum_max: 80, ph_min: 6.0, ph_max: 8.0, rain_min: 500, rain_max: 1200,
+                        water_req: "Medium", fertilizer: "Nitrogen and Potash NPK 120:60:60", expected_yield: "1.5 - 2.5 tons/hectare",
+                        estimated_profit: "₹" + Math.round(45000 * parseFloat(landSize)).toLocaleString('en-IN') + " - ₹" + Math.round(62000 * parseFloat(landSize)).toLocaleString('en-IN') + " total",
+                        reasoning: "Cotton is highly recommended for black clayey soil which holds moisture well during the warm season."
+                    },
+                    {
+                        name: "Sugarcane", icon: "🎋",
+                        suitable_soils: ["Loamy", "Clay", "Alluvial"], suitable_seasons: ["Kharif"],
+                        temp_min: 20, temp_max: 35, hum_min: 60, hum_max: 85, ph_min: 6.0, ph_max: 7.8, rain_min: 1100, rain_max: 2000,
+                        water_req: "High", fertilizer: "High Nitrogen NPK 150:80:60", expected_yield: "70 - 90 tons/hectare",
+                        estimated_profit: "₹" + Math.round(65000 * parseFloat(landSize)).toLocaleString('en-IN') + " - ₹" + Math.round(95000 * parseFloat(landSize)).toLocaleString('en-IN') + " total",
+                        reasoning: "Deep alluvial soils combined with high rainfall or heavy irrigation support optimal sugarcane growth."
+                    },
+                    {
+                        name: "Maize", icon: "🌽",
+                        suitable_soils: ["Alluvial", "Red", "Loamy"], suitable_seasons: ["Kharif", "Rabi"],
+                        temp_min: 18, temp_max: 32, hum_min: 50, hum_max: 80, ph_min: 5.5, ph_max: 7.5, rain_min: 500, rain_max: 1000,
+                        water_req: "Medium", fertilizer: "Balanced NPK 120:60:40", expected_yield: "4.5 - 5.5 tons/hectare",
+                        estimated_profit: "₹" + Math.round(22000 * parseFloat(landSize)).toLocaleString('en-IN') + " - ₹" + Math.round(36000 * parseFloat(landSize)).toLocaleString('en-IN') + " total",
+                        reasoning: "Warm sunny days, loamy or red well-drained soils make Maize a highly efficient and safe choice."
+                    },
+                    {
+                        name: "Groundnut", icon: "🥜",
+                        suitable_soils: ["Sandy", "Loamy", "Red"], suitable_seasons: ["Kharif", "Summer"],
+                        temp_min: 22, temp_max: 32, hum_min: 50, hum_max: 75, ph_min: 6.0, ph_max: 7.0, rain_min: 400, rain_max: 800,
+                        water_req: "Low", fertilizer: "NPK 20:40:40 and Gypsum", expected_yield: "2.0 - 3.0 tons/hectare",
+                        estimated_profit: "₹" + Math.round(32000 * parseFloat(landSize)).toLocaleString('en-IN') + " - ₹" + Math.round(47000 * parseFloat(landSize)).toLocaleString('en-IN') + " total",
+                        reasoning: "Groundnut grows exceptionally well in sandy loam soils that let pegs penetrate the soil easily."
+                    },
+                    {
+                        name: "Pulses", icon: "🌱",
+                        suitable_soils: ["Loamy", "Sandy", "Red"], suitable_seasons: ["Rabi", "Kharif"],
+                        temp_min: 15, temp_max: 30, hum_min: 45, hum_max: 70, ph_min: 6.0, ph_max: 7.5, rain_min: 300, rain_max: 600,
+                        water_req: "Low", fertilizer: "NPK 20:50:20 (Phosphorus rich)", expected_yield: "1.0 - 1.8 tons/hectare",
+                        estimated_profit: "₹" + Math.round(19000 * parseFloat(landSize)).toLocaleString('en-IN') + " - ₹" + Math.round(32000 * parseFloat(landSize)).toLocaleString('en-IN') + " total",
+                        reasoning: "Pulses have nitrogen-fixing properties, making them highly resilient on marginal sandy loam terrains."
+                    }
+                ];
+
+                const scoredCrops = [];
+                const tempNum = parseFloat(temp);
+                const humNum = parseFloat(hum);
+                const phNum = parseFloat(ph);
+                const rainNum = parseFloat(rain);
+
+                cropsDb.forEach(crop => {
+                    let score = 0;
+                    if (crop.suitable_soils.includes(soilType)) score += 25;
+                    else if (crop.suitable_soils.includes("Loamy") && soilType === "Alluvial") score += 15;
+                    if (crop.suitable_seasons.includes(season)) score += 20;
+                    if (tempNum >= crop.temp_min && tempNum <= crop.temp_max) score += 15;
+                    else score += Math.max(0, 15 - Math.min(Math.abs(tempNum - crop.temp_min), Math.abs(tempNum - crop.temp_max)) * 2);
+                    if (humNum >= crop.hum_min && humNum <= crop.hum_max) score += 15;
+                    else score += Math.max(0, 15 - Math.min(Math.abs(humNum - crop.hum_min), Math.abs(humNum - crop.hum_max)) * 0.5);
+                    if (rainNum >= crop.rain_min && rainNum <= crop.rain_max) score += 15;
+                    else score += Math.max(0, 15 - Math.min(Math.abs(rainNum - crop.rain_min), Math.abs(rainNum - crop.rain_max)) * 0.02);
+                    if (phNum >= crop.ph_min && phNum <= crop.ph_max) score += 10;
+                    else score += Math.max(0, 10 - Math.min(Math.abs(phNum - crop.ph_min), Math.abs(phNum - crop.ph_max)) * 5);
+                    
+                    let confidence = score / 100.0;
+                    if (prevCrop !== "None" && crop.name.toLowerCase() !== prevCrop.toLowerCase()) {
+                        confidence = Math.min(0.98, confidence + 0.03);
+                    }
+                    confidence = Math.min(0.98, Math.max(0.45, confidence));
+
+                    scoredCrops.push({
+                        raw_crop_key: crop.name,
+                        recommended_crop: crop.name,
+                        icon: crop.icon,
+                        confidence: parseFloat(confidence.toFixed(2)),
+                        reasoning: crop.reasoning,
+                        suitable_soil: crop.suitable_soils.join(", "),
+                        suitable_season: crop.suitable_seasons.join(", "),
+                        water_req: crop.water_req,
+                        fertilizer: crop.fertilizer,
+                        expected_yield: crop.expected_yield,
+                        estimated_profit: crop.estimated_profit
+                    });
+                });
+
+                scoredCrops.sort((a, b) => b.confidence - a.confidence);
+                return scoredCrops.slice(0, 3);
+            }
+
+            // 4. Setup Weather Auto-Detect & City Search Handlers
+            const detectBtn = document.getElementById('detect-weather-btn');
+            const searchCityBtn = document.getElementById('search-city-btn');
+            const cityInput = document.getElementById('manual-city-input');
+            const statusBadge = document.getElementById('detected-status-badge');
+            const statusInfo = document.getElementById('detected-info');
+            let weatherInfo = {};
+
+            // Search by Manual City / District Name
+            async function searchWeatherByCity() {
+                if (!cityInput || !cityInput.value.trim()) {
+                    alert("Please enter a city or district name (e.g., Nashik, Nagpur, Satara).");
+                    return;
+                }
+                const cityName = cityInput.value.trim();
+                if (searchCityBtn) {
+                    searchCityBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Searching...`;
+                    searchCityBtn.disabled = true;
+                }
+                if (statusBadge) {
+                    statusBadge.style.display = 'block';
+                    statusBadge.className = 'alert alert-info';
+                    statusInfo.textContent = `Fetching live weather for ${cityName}...`;
+                }
+
+                try {
+                    const response = await fetch(`${API_BASE}/weather/fetch?city=${encodeURIComponent(cityName)}`);
+                    if (!response.ok) {
+                        const errData = await response.json();
+                        throw new Error(errData.detail || "City not found");
+                    }
+                    const weather = await response.json();
+                    applyWeatherData(weather, null, null, `${weather.current.city}, ${weather.current.country} (City Search)`);
+                } catch (e) {
+                    alert(`Could not fetch weather for "${cityName}". ${e.message}`);
+                    if (statusBadge) statusBadge.style.display = 'none';
+                } finally {
+                    if (searchCityBtn) {
+                        searchCityBtn.innerHTML = `<i class="fas fa-search"></i> Search City`;
+                        searchCityBtn.disabled = false;
+                    }
+                }
+            }
+
+            if (searchCityBtn) {
+                searchCityBtn.addEventListener('click', searchWeatherByCity);
+            }
+            if (cityInput) {
+                cityInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        searchWeatherByCity();
+                    }
+                });
+            }
+
+            // Auto Detect Weather (GPS -> IP Geolocation -> Pune Fallback)
+            if (detectBtn) {
+                detectBtn.addEventListener('click', function() {
+                    console.log("Detect Weather clicked!");
+                    detectBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Detecting weather...`;
+                    detectBtn.disabled = true;
+                    if (statusBadge) {
+                        statusBadge.style.display = 'block';
+                        statusBadge.className = 'alert alert-info';
+                        statusInfo.textContent = 'Acquiring GPS coordinates...';
+                    }
+
+                    if (!navigator.geolocation) {
+                        console.warn("No geolocation support. Trying IP Geolocation.");
+                        tryIpGeolocation("GPS not supported");
+                        return;
+                    }
+
+                    navigator.geolocation.getCurrentPosition(
+                        async (position) => {
+                            const lat = position.coords.latitude;
+                            const lon = position.coords.longitude;
+                            statusInfo.textContent = `GPS fixed. Fetching live weather...`;
+                            
+                            try {
+                                const response = await fetch(`${API_BASE}/weather/fetch?lat=${lat}&lon=${lon}`);
+                                if (!response.ok) throw new Error("HTTP " + response.status);
+                                const weather = await response.json();
+                                applyWeatherData(weather, lat, lon, `${weather.current.city}, ${weather.current.country} (GPS Fixed)`);
+                            } catch (e) {
+                                console.warn("GPS weather fetch failed. Trying IP Geolocation.", e);
+                                await tryIpGeolocation("GPS API offline");
+                            }
+                        },
+                        async (error) => {
+                            console.warn("GPS denied/failed. Trying IP Geolocation.", error);
+                            let reason = 'GPS denied';
+                            if (error.code === error.POSITION_UNAVAILABLE) reason = 'Location unavailable';
+                            if (error.code === error.TIMEOUT) reason = 'GPS request timed out';
+                            await tryIpGeolocation(reason);
+                        },
+                        { timeout: 5000 }
+                    );
+                });
+            }
+
+            async function tryIpGeolocation(reason) {
+                if (statusInfo) statusInfo.textContent = `Trying IP-based geolocation fallback (${reason})...`;
+                try {
+                    const ipRes = await fetch('https://ipapi.co/json/');
+                    if (!ipRes.ok) throw new Error("IP geolocation service unavailable");
+                    const ipData = await ipRes.json();
+                    if (ipData.city) {
+                        const response = await fetch(`${API_BASE}/weather/fetch?city=${encodeURIComponent(ipData.city)}`);
+                        if (response.ok) {
+                            const weather = await response.json();
+                            applyWeatherData(weather, ipData.latitude, ipData.longitude, `${ipData.city}, ${ipData.region_code || ipData.country_name} (Auto IP Location)`);
+                            return;
+                        }
+                    }
+                    throw new Error("City not found from IP");
+                } catch (e) {
+                    console.warn("IP Geolocation failed. Falling back to default Pune location.", e);
+                    await useFallbackWeather(reason);
+                }
+            }
+
+            async function useFallbackWeather(reason) {
+                const lat = 18.5204;
+                const lon = 73.8567;
+                statusInfo.textContent = `Fetching default climate data...`;
+                try {
+                    const response = await fetch(`${API_BASE}/weather/fetch?lat=${lat}&lon=${lon}`);
+                    if (!response.ok) throw new Error("HTTP " + response.status);
+                    const weather = await response.json();
+                    applyWeatherData(weather, lat, lon, `Pune, MH (${reason})`);
+                } catch (e) {
+                    console.warn("All weather fetch failed. Using offline static values.");
+                    const mockWeather = {
+                        current: {
+                            temp: 24.5, humidity: 80, rain: 0, description: "scattered clouds",
+                            city: "Pune", country: "IN", wind_speed: 3.2, pressure: 1012
+                        },
+                        forecast: { expected_rain_24h: 0.0 }
+                    };
+                    applyWeatherData(mockWeather, lat, lon, `Pune, MH (offline fallback)`);
+                }
+            }
+
+            function applyWeatherData(weather, lat, lon, label) {
+                weatherInfo = {
+                    location: { latitude: lat, longitude: lon },
+                    current: weather.current,
+                    forecast: weather.forecast
+                };
+
+                const tempVal = Math.round(weather.current.temp * 10) / 10;
+                const humVal = Math.round(weather.current.humidity);
+                const rainVal = Math.min(2500, Math.max(200, Math.round(weather.forecast.expected_rain_24h * 10) || Math.round(weather.current.rain * 10) || 1000));
+
+                const tempSlider = document.getElementById('soil-temp');
+                if (tempSlider) {
+                    tempSlider.value = tempVal;
+                    const out = tempSlider.nextElementSibling;
+                    if (out) out.value = `${tempVal} °C`;
+                }
+                const humSlider = document.getElementById('soil-hum');
+                if (humSlider) {
+                    humSlider.value = humVal;
+                    const out = humSlider.nextElementSibling;
+                    if (out) out.value = `${humVal} %`;
+                }
+                const rainSlider = document.getElementById('soil-rain');
+                if (rainSlider) {
+                    rainSlider.value = rainVal;
+                    const out = rainSlider.nextElementSibling;
+                    if (out) out.value = `${rainVal} mm`;
+                }
+
+                if (statusBadge) statusBadge.className = 'alert alert-success';
+                const rainText = weather.current.rain ? `${weather.current.rain} mm/h` : (weather.forecast.expected_rain_24h > 0 ? `${weather.forecast.expected_rain_24h.toFixed(1)} mm (expected)` : '0 mm');
+                
+                if (statusInfo) {
+                    statusInfo.innerHTML = `
+                        <strong><i class="fas fa-check-circle"></i> Weather Detected Successfully!</strong><br>
+                        <span style="font-size:0.9rem; margin-top:5px; display:inline-block;">
+                            📍 <strong>Location:</strong> ${label}<br>
+                            🌡️ <strong>Temp:</strong> ${tempVal}°C | 💧 <strong>Humidity:</strong> ${humVal}% | ☁️ <strong>Condition:</strong> ${weather.current.description}<br>
+                            💨 <strong>Wind:</strong> ${weather.current.wind_speed} m/s | 📈 <strong>Pressure:</strong> ${weather.current.pressure} hPa | 🌧️ <strong>Rainfall:</strong> ${rainText}
+                        </span>
+                    `;
+                }
+                detectBtn.innerHTML = `<i class="fas fa-map-marker-alt"></i> Auto-Detect Location & Weather`;
+                detectBtn.disabled = false;
+
+                // Speak weather info in Hindi / active language
+                if (typeof window.speakText === 'function') {
+                    const activeLang = localStorage.getItem('agro_language') || 'Hindi';
+                    const locName = (weather.current && weather.current.city) ? weather.current.city : (label ? label.split(',')[0] : 'स्थान');
+                    let weatherSpeech = '';
+                    if (activeLang === 'मराठी') {
+                        weatherSpeech = `${locName} चे हवामान नोंदवले गेले. तापमान ${tempVal} अंश सेल्सिअस, आर्द्रता ${humVal} टक्के, पाऊस ${rainVal} मिलिमीटर आहे.`;
+                    } else if (activeLang === 'English') {
+                        weatherSpeech = `Weather recorded for ${locName}. Temperature ${tempVal} degrees Celsius, humidity ${humVal} percent, rainfall ${rainVal} millimeters.`;
+                    } else {
+                        weatherSpeech = `${locName} का मौसम रिकॉर्ड किया गया। तापमान ${tempVal} डिग्री सेल्सियस, आर्द्रता ${humVal} प्रतिशत, वर्षा ${rainVal} मिलीमीटर है।`;
+                    }
+                    window.speakText(weatherSpeech, activeLang);
+                }
+            }
+
+            // 5. Setup Get Recommendation Button click handler
+            const recommendBtn = document.getElementById('run-recommend-btn');
+            if (recommendBtn) {
+                recommendBtn.addEventListener('click', async function() {
+                    console.log("Get Recommendation clicked!");
+                    const nEl = document.getElementById('soil-n');
+                    const pEl = document.getElementById('soil-p');
+                    const kEl = document.getElementById('soil-k');
+                    const landEl = document.getElementById('soil-land');
+                    
+                    [nEl, pEl, kEl, landEl].forEach(el => { if (el) el.style.borderColor = ''; });
+                    
+                    let isValid = true;
+                    if (!nEl || nEl.value.trim() === '' || isNaN(nEl.value) || parseFloat(nEl.value) < 0) { if (nEl) nEl.style.borderColor = '#ef4444'; isValid = false; }
+                    if (!pEl || pEl.value.trim() === '' || isNaN(pEl.value) || parseFloat(pEl.value) < 0) { if (pEl) pEl.style.borderColor = '#ef4444'; isValid = false; }
+                    if (!kEl || kEl.value.trim() === '' || isNaN(kEl.value) || parseFloat(kEl.value) < 0) { if (kEl) kEl.style.borderColor = '#ef4444'; isValid = false; }
+                    if (!landEl || landEl.value.trim() === '' || isNaN(landEl.value) || parseFloat(landEl.value) <= 0) { if (landEl) landEl.style.borderColor = '#ef4444'; isValid = false; }
+                    
+                    if (!isValid) {
+                        alert('Please fill out all soil nutrient parameters and land size with valid positive numbers.');
+                        return;
+                    }
+
+                    recommendBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Generating AI Recommendation...`;
+                    recommendBtn.disabled = true;
+
+                    const n = nEl.value;
+                    const p = pEl.value;
+                    const k = kEl.value;
+                    const temp = document.getElementById('soil-temp').value;
+                    const hum = document.getElementById('soil-hum').value;
+                    const ph = document.getElementById('soil-ph').value;
+                    const rain = document.getElementById('soil-rain').value;
+                    const soilType = document.getElementById('soil-type-select').value;
+                    const water = document.getElementById('soil-water-select').value;
+                    const season = document.getElementById('soil-season-select').value;
+                    const landSize = landEl.value;
+                    const prevCrop = document.getElementById('soil-prev-crop') ? document.getElementById('soil-prev-crop').value : 'None';
+
+                    let recommendations = [];
+                    let relevantSchemes = ["PM-KISAN", "Soil Health Card Scheme"];
+                    const currentLang = localStorage.getItem('agro_language') || 'English';
+
+                    try {
+                        const response = await fetch(`${API_BASE}/predict/crop`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                nitrogen: parseInt(n), phosphorus: parseInt(p), potassium: parseInt(k),
+                                temperature: parseFloat(temp), humidity: parseFloat(hum), ph: parseFloat(ph), rainfall: parseInt(rain),
+                                soil_type: soilType, water_availability: water, season: season,
+                                land_size: parseFloat(landSize), previous_crop: prevCrop, weather_info: weatherInfo,
+                                language: currentLang
+                            })
+                        });
+                        if (!response.ok) throw new Error("HTTP " + response.status);
+                        const result = await response.json();
+                        recommendations = result.recommendations;
+                        relevantSchemes = result.relevant_schemes || relevantSchemes;
+                    } catch (e) {
+                        console.warn("Backend crop recommendation API failed. Using local rule scorer.", e);
+                        recommendations = getLocalRecommendations(n, p, k, temp, hum, ph, rain, soilType, water, season, landSize, prevCrop);
+                    }
+
+                    // Render recommendations using global translator
+                    window.renderCropCards(recommendations, relevantSchemes, true);
+
+                    const resultsWrapper = document.getElementById('recommendation-result-wrapper');
+                    if (resultsWrapper) {
+                        resultsWrapper.scrollIntoView({ behavior: 'smooth' });
+                    }
+
+                    // Save session recommendations for PDF resume
+                    if (recommendations.length > 0) {
+                        currentUser.last_crop_rec = recommendations[0];
+                        try {
+                            localStorage.setItem('agro_user', JSON.stringify(currentUser));
+                        } catch(se) {}
+                    }
+
+                    recommendBtn.innerHTML = `<i class="fas fa-seedling"></i> Get Recommendation`;
+                    recommendBtn.disabled = false;
+                });
+            }
+
+            window.lastCropRecommendations = null;
+            window.lastRelevantSchemes = null;
+
+            window.speakCropRecommendations = function() {
+                if (!window.lastCropRecommendations || window.lastCropRecommendations.length === 0) return;
+                const activeLang = localStorage.getItem('agro_language') || 'Hindi';
+                const recs = window.lastCropRecommendations;
+                
+                const formattedRecs = recs.map(r => (typeof window.formatTranslatedCropRecord === 'function') ? window.formatTranslatedCropRecord(r, activeLang) : r);
+                const cropNamesList = formattedRecs.map(r => r.recommended_crop).join(', ');
+                
+                let cropSpeech = '';
+                if (activeLang === 'मराठी') {
+                    cropSpeech = `तुमच्या शेती आणि हवामानानुसार सर्वोत्तम शिफारस केलेली पिके आहेत: ${cropNamesList}.`;
+                } else if (activeLang === 'English') {
+                    cropSpeech = `Based on your soil and climate, the top recommended crops are: ${cropNamesList}.`;
+                } else {
+                    cropSpeech = `आपकी मिट्टी और मौसम के लिए सर्वश्रेष्ठ अनुशंसित फसलें हैं: ${cropNamesList}।`;
+                }
+                if (typeof window.speakText === 'function') {
+                    window.speakText(cropSpeech, activeLang);
+                }
+            };
+
+            window.renderCropCards = function(recs, schemes, autoSpeak = false) {
+                if (recs) window.lastCropRecommendations = recs;
+                if (schemes) window.lastRelevantSchemes = schemes;
+
+                const recommendations = window.lastCropRecommendations;
+                const relevantSchemes = window.lastRelevantSchemes || ["PM-KISAN", "Soil Health Card Scheme"];
+
+                if (!recommendations || recommendations.length === 0) return;
+
+                if (autoSpeak) {
+                    window.speakCropRecommendations();
+                }
+
+                const curLang = localStorage.getItem('agro_language') || 'English';
+                const tDict = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[curLang]) ? TRANSLATIONS[curLang] : TRANSLATIONS['English'];
+                const cardsContainer = document.getElementById('rec-cards-container');
+
+                if (cardsContainer) {
+                    cardsContainer.innerHTML = '';
+                    recommendations.forEach((rawRec, idx) => {
+                        const rec = (typeof window.formatTranslatedCropRecord === 'function') ? window.formatTranslatedCropRecord(rawRec, curLang) : rawRec;
+                        const card = document.createElement('div');
+                        card.className = 'glass-panel hover-glow';
+                        card.style.borderRadius = '20px';
+                        card.style.padding = '1.5rem';
+                        card.style.border = '1px solid var(--border-color)';
+                        card.style.borderLeft = idx === 0 ? '6px solid #10b981' : (idx === 1 ? '6px solid #2563eb' : '6px solid #f59e0b');
+                        card.style.position = 'relative';
+                        card.style.background = '#ffffff';
+
+                        const scorePercentage = Math.round((rec.confidence || 0.95) * 100);
+                        const recLabel = (curLang === 'मराठी' ? 'शिफारस' : (curLang === 'हिंदी' ? 'सिफारिश' : (curLang === 'తెలుగు' ? 'సిఫార్సు' : (curLang === 'മലയാളം' ? 'നിർദ്ദേശം' : (curLang === 'ਪੰਜਾਬੀ' ? 'ਸਿਫ਼ਾਰਸ਼' : (curLang === 'ગુજરાતી' ? 'ભલામણ' : 'Recommendation')))))) + ' #' + (idx + 1);
+                        const matchLabel = (curLang === 'मराठी' ? 'जुळणी' : (curLang === 'हिंदी' ? 'मेल' : (curLang === 'తెలుగు' ? 'జత' : (curLang === 'മലയാളം' ? 'അനുയോജ്യം' : (curLang === 'ਪੰਜਾਬੀ' ? 'ਮੈਚ' : (curLang === 'ગુજરાતી' ? 'બંધબેસતું' : 'Match'))))));
+
+                        card.innerHTML = `
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1rem; flex-wrap:wrap; gap:10px;">
+                                <div style="display:flex; align-items:center; gap:12px;">
+                                    <span style="font-size:2.2rem; line-height:1;">${rec.icon || '🌾'}</span>
+                                    <div>
+                                        <h4 style="margin:0; font-size:1.35rem; font-weight:800; color:#0f172a !important;">${rec.recommended_crop}</h4>
+                                        <span style="font-size:0.78rem; font-weight:600; color:#475569 !important; text-transform:uppercase; letter-spacing:0.5px;">${recLabel}</span>
+                                    </div>
+                                </div>
+                                <span style="font-weight:800; font-size:0.85rem; color:${idx === 0 ? '#10b981' : (idx === 1 ? '#2563eb' : '#f59e0b')}; background:${idx === 0 ? 'rgba(16,185,129,0.08)' : (idx === 1 ? 'rgba(37,99,237,0.08)' : 'rgba(245,158,11,0.08)')}; padding:0.4rem 0.8rem; border-radius:50px; border:1px solid; border-color:inherit;">
+                                    ${scorePercentage}% ${matchLabel}
+                                </span>
+                            </div>
+                            <p style="font-size:0.92rem; color:#1e293b !important; background:rgba(0,0,0,0.02); padding:0.8rem 1rem; border-radius:10px; margin-bottom:1.25rem; line-height:1.5; border:1px solid rgba(0,0,0,0.04);">
+                                <strong style="color:#0f172a !important;">${tDict.ai_insight || 'AI Insight'}:</strong> <em>${rec.reasoning}</em>
+                            </p>
+                            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:1rem; font-size:0.88rem; color:#475569 !important;">
+                                <div><i class="fas fa-layer-group" style="width:18px; color:#475569 !important;"></i> <strong style="color:#475569 !important;">${tDict.suitable_soil || 'Suitable Soil'}:</strong><br><span style="color:#0f172a !important; font-weight:500;">${rec.suitable_soil}</span></div>
+                                <div><i class="fas fa-cloud-sun" style="width:18px; color:#475569 !important;"></i> <strong style="color:#475569 !important;">${tDict.suitable_season || 'Suitable Season'}:</strong><br><span style="color:#0f172a !important; font-weight:500;">${rec.suitable_season}</span></div>
+                                <div><i class="fas fa-tint" style="width:18px; color:#475569 !important;"></i> <strong style="color:#475569 !important;">${tDict.water_req || 'Water Requirement'}:</strong><br><span style="color:#0f172a !important; font-weight:500;">${rec.water_req}</span></div>
+                                <div><i class="fas fa-weight-hanging" style="width:18px; color:#475569 !important;"></i> <strong style="color:#475569 !important;">${tDict.expected_yield || 'Expected Yield'}:</strong><br><span style="color:#0f172a !important; font-weight:500;">${rec.expected_yield}</span></div>
+                                <div><i class="fas fa-flask" style="width:18px; color:#475569 !important;"></i> <strong style="color:#475569 !important;">${tDict.fertilizer || 'Fertilizer Recommendation'}:</strong><br><span style="color:#0f172a !important; font-weight:500;">${rec.fertilizer}</span></div>
+                                <div><i class="fas fa-coins" style="width:18px; color:#475569 !important;"></i> <strong style="color:#10b981 !important; font-weight:700;">${rec.estimated_profit}</strong></div>
+                            </div>
+                        `;
+                        cardsContainer.appendChild(card);
+                    });
+                }
+
+                const schemeListEl = document.getElementById('rec-linked-schemes-list');
+                if (schemeListEl) {
+                    schemeListEl.innerHTML = '';
+                    relevantSchemes.forEach(scheme => {
+                        const li = document.createElement('li');
+                        li.style.marginBottom = '6px';
+                        li.innerHTML = `<i class="fas fa-check-circle" style="color:#16a34a; margin-right:8px;"></i> <strong style="color:#0f172a !important;">${scheme}</strong>`;
+                        schemeListEl.appendChild(li);
+                    });
+                }
+
+                const placeholderEl = document.getElementById('recommendation-placeholder');
+                if (placeholderEl) placeholderEl.style.display = 'none';
+
+                const resultsWrapper = document.getElementById('recommendation-result-wrapper');
+                if (resultsWrapper) {
+                    resultsWrapper.style.display = 'block';
+                }
+            };
+        })();
+    </script>
+</body>
+</html>

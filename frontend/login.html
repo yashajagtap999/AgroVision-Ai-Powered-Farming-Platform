@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroVision - Profile Access</title>
+    
+    <!-- External CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        .auth-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            min-height: 100vh;
+            background-color: var(--bg-secondary);
+        }
+
+        /* Left Split Panel */
+        .auth-left-panel {
+            position: relative;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.88), rgba(124, 58, 237, 0.88)), url('attractive_farmer.png') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 3.5rem;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .left-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #ffffff;
+            z-index: 10;
+        }
+
+        .left-logo span {
+            font-size: 2rem;
+        }
+
+        .left-logo h2 {
+            margin: 0;
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .left-content {
+            z-index: 10;
+            max-width: 550px;
+        }
+
+        .left-content h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            color: #ffffff;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        .left-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .left-footer {
+            z-index: 10;
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* Right Form Panel */
+        .auth-right-panel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 2rem;
+            background-color: #ffffff;
+            overflow-y: auto;
+        }
+
+        .auth-card-custom {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .toggle-auth-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .toggle-auth-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .auth-layout {
+                grid-template-columns: 1fr;
+            }
+            .auth-left-panel {
+                display: none;
+            }
+            .auth-right-panel {
+                background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.04), transparent 60%),
+                            radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.04), transparent 60%),
+                            #ffffff;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="auth-layout">
+        <!-- Left Panel: Large graphic modern farmer & overlays -->
+        <div class="auth-left-panel">
+            <a href="index.html" class="left-logo">
+                <span>🌾</span>
+                <h2>AgroVision</h2>
+            </a>
+
+            <!-- Text contents & sliding titles -->
+            <div class="left-content">
+                <h1 data-i18n="login_left_title">AI-Guided Growth <br>for Every Acre.</h1>
+                <p data-i18n="login_left_desc">Verify your details, upload certificates to pre-populate applications, and receive personalized agricultural insights instantly.</p>
+                
+                <!-- Simplified features list (no cards) -->
+                <ul class="login-features-list" style="margin-top: 2.5rem; list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.25rem;">
+                    <li style="display: flex; align-items: flex-start; gap: 12px;">
+                        <i class="fas fa-check-circle" style="color: #34d399; font-size: 1.25rem; margin-top: 3px;"></i>
+                        <div>
+                            <strong style="display: block; font-size: 1rem; color: #ffffff;" data-i18n="feature1_title">Voice-First Assistant</strong>
+                            <span style="font-size: 0.88rem; color: rgba(255,255,255,0.75);" data-i18n="login_feat1_sub">Ask farming questions naturally in Marathi, Hindi, English.</span>
+                        </div>
+                    </li>
+                    <li style="display: flex; align-items: flex-start; gap: 12px;">
+                        <i class="fas fa-check-circle" style="color: #34d399; font-size: 1.25rem; margin-top: 3px;"></i>
+                        <div>
+                            <strong style="display: block; font-size: 1rem; color: #ffffff;" data-i18n="feature2_title">AI Crop Recommendation</strong>
+                            <span style="font-size: 0.88rem; color: rgba(255,255,255,0.75);" data-i18n="login_feat2_sub">Receive recommendations based on soil parameters and weather.</span>
+                        </div>
+                    </li>
+                    <li style="display: flex; align-items: flex-start; gap: 12px;">
+                        <i class="fas fa-check-circle" style="color: #34d399; font-size: 1.25rem; margin-top: 3px;"></i>
+                        <div>
+                            <strong style="display: block; font-size: 1rem; color: #ffffff;" data-i18n="feature3_title">Government Scheme Navigator</strong>
+                            <span style="font-size: 0.88rem; color: rgba(255,255,255,0.75);" data-i18n="login_feat3_sub">Find eligible central and state benefits in one dashboard.</span>
+                        </div>
+                    </li>
+                    <li style="display: flex; align-items: flex-start; gap: 12px;">
+                        <i class="fas fa-check-circle" style="color: #34d399; font-size: 1.25rem; margin-top: 3px;"></i>
+                        <div>
+                            <strong style="display: block; font-size: 1rem; color: #ffffff;" data-i18n="feature4_title">Smart Farming Video Tutorials</strong>
+                            <span style="font-size: 0.88rem; color: rgba(255,255,255,0.75);" data-i18n="login_feat4_sub">Watch multilingual tutorials with Text-to-Speech voices.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="left-footer" data-i18n="login_left_footer">
+                &copy; 2026 AgroVision. Empowering Indian agriculture with machine learning.
+            </div>
+        </div>
+
+        <!-- Right Panel: Spacious sign-in and signup forms -->
+        <div class="auth-right-panel">
+            <div class="auth-card-custom">
+                <div style="display:flex; justify-content:flex-end; margin-bottom:1rem;">
+                    <div class="lang-select-wrapper">
+                        <select id="global-lang-select" class="lang-select" aria-label="Select Language">
+                            <option value="English">English</option>
+                            <option value="हिंदी">हिंदी</option>
+                            <option value="मराठी">मराठी</option>
+                            <option value="తెలుగు">తెలుగు</option>
+                            <option value="മലയാളം">മലയാളം</option>
+                            <option value="ਪੰਜਾਬੀ">ਪੰਜਾਬੀ</option>
+                            <option value="ગુજરાતી">ગુજરાતી</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- 1. SIGN IN FORM -->
+                <div id="login-card" class="fade-in-section is-visible">
+                    <div style="margin-bottom: 2.5rem;">
+                        <h2 style="font-weight: 800; font-size: 2rem; letter-spacing: -0.5px;" data-i18n="login_welcome">Welcome back</h2>
+                        <p style="color: var(--text-secondary); margin-top:5px; font-size:0.95rem;" data-i18n="login_sub">Enter your registered mobile number to access your account.</p>
+                    </div>
+
+                    <div id="login-error-alert" class="alert alert-danger" style="display:none; font-size:0.88rem; border-radius:10px;"></div>
+                    <form id="login-form">
+                        <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1.25rem;">
+                            <label for="login-phone" class="form-label-custom" style="font-size:0.88rem; font-weight:600; color:var(--text-secondary); display:flex; align-items:center; gap:6px;"><i class="fas fa-phone-alt"></i> <span data-i18n="mobile_number">Mobile Number</span></label>
+                            <input type="tel" id="login-phone" class="form-control-custom" placeholder="Enter 10-digit mobile number" required pattern="[0-9]{10}">
+                        </div>
+                        <button type="submit" id="login-submit-btn" class="btn-premium btn-primary-custom w-100 ripple-effect" style="padding: 0.85rem;" data-i18n="access_platform">
+                            <i class="fas fa-sign-in-alt"></i> Access My Platform
+                        </button>
+                    </form>
+
+                    <div style="text-align: center; margin-top: 2rem; font-size: 0.9rem; color: var(--text-secondary);">
+                        <span data-i18n="toggle_no_account">Don't have an account?</span> <span class="toggle-auth-link" onclick="toggleAuthForms('register')" data-i18n="toggle_reg_link">Register Profile</span>
+                    </div>
+                </div>
+
+                <!-- 2. REGISTRATION FORM -->
+                <div id="register-card" class="fade-in-section is-visible" style="display: none;">
+                    <div style="margin-bottom: 2rem;">
+                        <h2 style="font-weight: 800; font-size: 2rem; letter-spacing: -0.5px;" data-i18n="create_profile">Create farm profile</h2>
+                        <p style="color: var(--text-secondary); margin-top:5px; font-size:0.95rem;" data-i18n="reg_sub">Check eligible government matching schemes in seconds.</p>
+                    </div>
+
+                    <div id="register-error-alert" class="alert alert-danger" style="display:none; font-size:0.88rem; border-radius:10px;"></div>
+
+                    <form id="register-form">
+                        <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1.25rem;">
+                            <label for="reg-name" class="form-label-custom" style="font-size:0.88rem; font-weight:600; color:var(--text-secondary); display:flex; align-items:center; gap:6px;"><i class="fas fa-user"></i> <span data-i18n="full_name">Full Name</span></label>
+                            <input type="text" id="reg-name" class="form-control-custom" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1.25rem;">
+                            <label for="reg-phone" class="form-label-custom" style="font-size:0.88rem; font-weight:600; color:var(--text-secondary); display:flex; align-items:center; gap:6px;"><i class="fas fa-phone-alt"></i> <span data-i18n="mobile_number">Mobile Number</span></label>
+                            <input type="tel" id="reg-phone" class="form-control-custom" placeholder="Enter 10-digit mobile number" required pattern="[0-9]{10}">
+                        </div>
+
+                        <div class="form-row-grid" style="margin-bottom: 1.25rem;">
+                            <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem;">
+                                <label for="reg-state" class="form-label-custom" style="font-size:0.88rem; font-weight:600; color:var(--text-secondary);" data-i18n="state_location">State Location</label>
+                                <select id="reg-state" class="form-control-custom" required aria-label="Select State">
+                                    <option value="" disabled selected>Select State</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group-custom" style="display:flex; flex-direction:column; gap:0.5rem;">
+                                <label for="reg-land" class="form-label-custom" style="font-size:0.88rem; font-weight:600; color:var(--text-secondary);" data-i18n="land_acres">Land Size (Acres)</label>
+                                <input type="number" id="reg-land" class="form-control-custom" placeholder="e.g. 1.5" required step="0.1" min="0.1" max="100" value="1.5">
+                            </div>
+                        </div>
+
+                        <button type="submit" id="register-submit-btn" class="btn-premium btn-primary-custom w-100 ripple-effect" style="padding: 0.85rem;" data-i18n="create_farm_btn">
+                            <i class="fas fa-user-plus"></i> Create Farm Profile
+                        </button>
+                    </form>
+
+                    <div style="text-align: center; margin-top: 2rem; font-size: 0.9rem; color: var(--text-secondary);">
+                        <span data-i18n="toggle_has_account">Already registered?</span> <span class="toggle-auth-link" onclick="toggleAuthForms('login')" data-i18n="toggle_login_link">Access Profile</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/animation.js"></script>
+    
+    <script>
+        // Check url params for signup toggle
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('signup') === 'true') {
+                toggleAuthForms('register');
+            }
+        });
+
+        function toggleAuthForms(view) {
+            const loginCard = document.getElementById('login-card');
+            const registerCard = document.getElementById('register-card');
+            
+            document.getElementById('login-error-alert').style.display = 'none';
+            document.getElementById('register-error-alert').style.display = 'none';
+
+            if (view === 'register') {
+                loginCard.style.display = 'none';
+                registerCard.style.display = 'block';
+            } else {
+                loginCard.style.display = 'block';
+                registerCard.style.display = 'none';
+            }
+        }
+
+        // Login Handler
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const phone = document.getElementById('login-phone').value;
+            const btn = document.getElementById('login-submit-btn');
+            const alertBox = document.getElementById('login-error-alert');
+
+            alertBox.style.display = 'none';
+            btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Accessing...`;
+            btn.disabled = true;
+
+            try {
+                const user = await ApiService.getUserByPhone(phone);
+                if (user) {
+                    SessionManager.setCurrentUser(user);
+                    window.location.href = 'dashboard.html';
+                } else {
+                    alertBox.textContent = "This mobile number is not registered. Please register first to access the platform.";
+                    alertBox.style.display = 'block';
+                }
+            } catch (err) {
+                alertBox.textContent = "Connection Error: Backend server is offline.";
+                alertBox.style.display = 'block';
+            } finally {
+                btn.innerHTML = `<i class="fas fa-sign-in-alt"></i> Access My Platform`;
+                btn.disabled = false;
+            }
+        });
+
+        // Register Handler
+        document.getElementById('register-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('register-submit-btn');
+            const alertBox = document.getElementById('register-error-alert');
+            
+            alertBox.style.display = 'none';
+            btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Registering...`;
+            btn.disabled = true;
+
+            const profile = {
+                name: document.getElementById('reg-name').value,
+                phone_number: document.getElementById('reg-phone').value,
+                state: document.getElementById('reg-state').value,
+                land_size_acres: parseFloat(document.getElementById('reg-land').value),
+                crop_types: "Wheat, Paddy" // default crops value
+            };
+
+            try {
+                const user = await ApiService.registerUser(profile);
+                SessionManager.setCurrentUser(user);
+                window.location.href = 'dashboard.html';
+            } catch (err) {
+                alertBox.textContent = "Registration Failed. Make sure the phone number is unique.";
+                alertBox.style.display = 'block';
+            } finally {
+                btn.innerHTML = `<i class="fas fa-user-plus"></i> Create Farm Profile`;
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

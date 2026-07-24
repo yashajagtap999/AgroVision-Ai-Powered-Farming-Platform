@@ -1,0 +1,25 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment and Secret files
+.env
+*.env
+
+# SQLite Database
+*.db
+farmer_app.db
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# IDE files
+.vscode/
+.idea/
+
+# Reports output directory contents except .gitkeep
+backend/reports/*
+!backend/reports/.gitkeep
